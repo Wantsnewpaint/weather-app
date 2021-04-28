@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    font-family: 'Rubik', sans-serif;
+    }
+  .search-btn {
+    background-color: #fff;
+  }
+  .partlysun-icon {
+    color: steelblue;
+    font-size: 50px;
+  }
+  .sun-icon {
+    color: rgb(238, 238, 91);
+    font-size: 50px;
+  }
