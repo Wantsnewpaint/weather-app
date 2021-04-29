@@ -1,26 +1,39 @@
 let now = new Date();
-let h6 = document.querySelector("h6");
-let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let months = ["January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"];
+  let month = months[now.getMonth()];
+let days = ["Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"];
 let day = days[now.getDay()];
-let hours = now.getHours();
+
+let hour = now.getHours();
+if (hour < 10) {
+    hour = `0${hour}`;
+  };
 let minutes = now.getMinutes();
-h6.innerHTML = `${day} ${hours}:${minutes}`;
+if (minutes < 10) {
+    minutes = `0${minutes}`;
+  };
 
-function followF(event) {
-    event.preventDefault();
-    let link = document.querySelector(".mainTemp");
-    link.innerHTML ="66°"
-}
-let followLink = document.querySelector("#fahrenheit-link");
-followLink.addEventListener("click", followF);
+  let h2 = document.querySelector("h2");
+  h2.innerHTML = `${day} ${month} ${hour}:${minutes}`;
 
-function followC(event) {
-    event.preventDefault();
-    let link = document.querySelector(".mainTemp");
-    link.innerHTML ="18°"
-}
-let followLink2 = document.querySelector("#celsius-link");
-followLink2.addEventListener("click", followC);
+
 
 function search(event) {
     event.preventDefault();
