@@ -10,11 +10,22 @@
 .header {
   padding-bottom: 40px;
 }
-
-.forecast {
-padding: 40px 0px 40px 0px;
+.mainTemp strong {
+  font-size: 52px;
+  font-weight: 500;
+  margin-right: 10px;
 }
-
+.mainTemp .units {
+  position: relative;
+  top: -24px;
+}
+.weatherIcon {
+  position: relative;
+  top: -24px;
+}
 li {
   list-style: none;
+}
+.forecast {
+padding: 40px 0px 10px 0px;
 }
