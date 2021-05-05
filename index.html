@@ -17,11 +17,13 @@
         <div class="search-form">
           <div class="row">
             <div class="col-9">
-              <input type="search" placeholder="Enter a city" class="form-control search-input">
+              <form id="search-form">
+              <input type="search" placeholder="Enter a city" class="form-control search-input" id="searchCity" autocomplete="off">
             </div>
             <div class="col-3">
               <input type="submit" class="btn btn-primary w-100" value="Search">
             </div>
+            </form>
             </div>
         </div>
       </div>
@@ -30,7 +32,7 @@
           <h1 id="city"></h1>
           <div class="mainTemp col-6"><strong id="temperature"></strong>
             <span class="units">°C | <a href="#">°F</a></span>
-            <img src ="http://openweathermap.org/img/wn/10d@2x.png" id="weatherImage" />
+            <img src ="" id="weatherImage" />
           </div>
           <div class="col-6">
             <ul>

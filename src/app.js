@@ -52,8 +52,19 @@ function displayTemperature(response) {
   weatherImage.setAttribute("alt", response.data.weather[0].description);
 }
 
-let apiKey ="dc3dd8fad72c3a037e39c29f90d88da6";
-let city = "Warsaw";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey ="dc3dd8fad72c3a037e39c29f90d88da6";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature)
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchCityElement = document.querySelector("#searchCity");
+  search(searchCityElement.value);
+}
+
+search("Montevideo");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
