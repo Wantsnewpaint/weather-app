@@ -47,8 +47,13 @@ function displayTemperature(response) {
   humidity.innerHTML = response.data.main.humidity;
   let realFeel = document.querySelector("#realFeel");
   realFeel.innerHTML = Math.round(response.data.main.feels_like);
+  
+  weatherImage.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+  weatherImage.setAttribute("alt", response.data.weather[0].description);
 }
+
 let apiKey ="dc3dd8fad72c3a037e39c29f90d88da6";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Montevideo&appid=${apiKey}&units=metric`;
+let city = "Warsaw";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature)
