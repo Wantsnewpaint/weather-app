@@ -1,29 +1,20 @@
-div.container {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-  }
-  /* spacing */
-  table {
-    align-items: center;
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    border: 2px solid rgb(106, 106, 109);
-  }
-  th, td {
-padding: 20px;
+.wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  display: block;
 }
-/* icons */
-.search-btn {
-  background-color: #fff;
+.weather-app {
+  padding: 30px 40px 30px 40px;
+  border: 1px solid rgba(34, 33, 33, 1);
 }
-.partlysun-icon {
-  color: steelblue;
-  font-size: 50px;
+.header {
+  padding-bottom: 40px;
 }
-.sun-icon {
-  color: rgb(238, 238, 91);
-  font-size: 50px;
+
+.forecast {
+padding: 40px 0px 40px 0px;
+}
+
+li {
+  list-style: none;
 }
