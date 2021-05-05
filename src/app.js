@@ -11,7 +11,8 @@ let months = ["January",
     "October",
     "November",
     "December"];
-  let month = months[now.getMonth()];
+let month = months[now.getMonth()];
+
 let days = ["Sunday",
     "Monday",
     "Tuesday",
@@ -20,6 +21,8 @@ let days = ["Sunday",
     "Friday",
     "Saturday"];
 let day = days[now.getDay()];
+
+let date = now.getDate();
 
 let hour = now.getHours();
 if (hour < 10) {
@@ -30,16 +33,22 @@ if (minutes < 10) {
     minutes = `0${minutes}`;
   };
 
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${day} ${month} ${hour}:${minutes}`;
+let li = document.querySelector("#currentDate");
+li.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
-
-
-function search(event) {
-    event.preventDefault();
-    let searchInput = document.querySelector("#search-input")
-    let h5 = document.querySelector("#mainCity");
-    h5.innerHTML = `Searching for ${searchInput.value} ...`;
+function displayTemperature(response) {
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.name;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = response.data.main.humidity;
+  let realFeel = document.querySelector("#realFeel");
+  realFeel.innerHTML = Math.round(response.data.main.feels_like);
 }
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
+let apiKey ="dc3dd8fad72c3a037e39c29f90d88da6";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Montevideo&appid=${apiKey}&units=metric`;
+
+axios.get(apiUrl).then(displayTemperature)
