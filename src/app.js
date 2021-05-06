@@ -65,6 +65,15 @@ function handleSubmit(event) {
   search(searchCityElement.value);
 }
 
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey ="dc3dd8fad72c3a037e39c29f90d88da6";
+  apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=dc3dd8fad72c3a037e39c29f90d88da6`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+navigator.geolocation.getCurrentPosition(showPosition);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
@@ -88,5 +97,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
-
-search("Montevideo");
