@@ -21,9 +21,11 @@
 }
 #celsius {
   text-decoration: none;
+  cursor: default;
 }
 #fahrenheit {
   text-decoration: none;
+  cursor: default;
 }
 .weatherIcon {
   position: relative;

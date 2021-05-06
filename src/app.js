@@ -49,6 +49,9 @@ function displayTemperature(response) {
   tempHigh.innerHTML = Math.round(tempMax);
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
+  let windSpeed = document.querySelector("#windSpeed");
+  windSpeed.innerHTML = Math.round(response.data.wind.speed);
+  console.log(response.data);
   
   weatherImage.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
   weatherImage.setAttribute("alt", response.data.weather[0].description);
