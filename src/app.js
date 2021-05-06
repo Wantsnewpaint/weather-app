@@ -44,10 +44,11 @@ function displayTemperature(response) {
   temperatureElement.innerHTML = Math.round(temperature);
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+  let tempHigh = document.querySelector("#tempHigh");
+  tempMax = response.data.main.temp_max;
+  tempHigh.innerHTML = Math.round(tempMax);
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
-  let realFeel = document.querySelector("#realFeel");
-  realFeel.innerHTML = Math.round(response.data.main.feels_like);
   
   weatherImage.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
   weatherImage.setAttribute("alt", response.data.weather[0].description);
@@ -81,12 +82,14 @@ function displayFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  tempHigh.innerHTML = Math.round((tempMax * 9) / 5 + 32);
 }
 
 function displayCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(temperature);
+  tempHigh.innerHTML = Math.round(tempMax);
 }
 
 let temperature = null;
@@ -96,4 +99,3 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
-
