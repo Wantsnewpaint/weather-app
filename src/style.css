@@ -19,6 +19,12 @@
   position: relative;
   top: -24px;
 }
+#celsius {
+  text-decoration: none;
+}
+#fahrenheit {
+  text-decoration: none;
+}
 .weatherIcon {
   position: relative;
 }
