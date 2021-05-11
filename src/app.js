@@ -36,29 +36,31 @@ if (minutes < 10) {
 let li = document.querySelector("#currentDate");
 li.innerHTML = `${day}, ${month} ${date}, ${hour}:${minutes}`;
 
+function formatDay(timeStamp) {
+  let date = new Date(timeStamp * 1000);
+  let day = date.getDay();
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday"];
-  days.forEach(function(day) {
 
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 4) {
 
   forecastHTML = forecastHTML + `
-  <div class="col">
-  <div class="date">${day}</div>
-  <div class="icon"></div>
+  <div class="col-3">
+  <div class="date">${formatDay(forecastDay.dt)}</div>
+  <div class="icon"><img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" width="70px"/></div>
   <div class="temp">
-  <span class="weather-forecast-max"></span> / 
-  <span class="weather-forcast-min"></span>
+  <span class="weather-forecast-max">${Math.round(forecastDay.temp.max)}°</span> / 
+  <span class="weather-forcast-min">${Math.round(forecastDay.temp.min)}°</span>
   </div>
 </div>`;
-
+    }
 });
 
 forecastHTML = forecastHTML + `</div>`;
@@ -117,7 +119,6 @@ function showPosition(position) {
 navigator.geolocation.getCurrentPosition(showPosition);
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
 
 function displayFahrenheit(event) {
   event.preventDefault();
