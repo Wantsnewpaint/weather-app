@@ -135,3 +135,13 @@ function displayCelsius(event) {
 }
 
 let temperature = null;
+
+var currentTime = new Date().getHours();
+if (document.body) {
+    if (7 <= currentTime && currentTime < 20) {
+        document.body.style.backgroundColor = "pink";
+    }
+    else {
+        document.body.style.backgroundColor = "blueviolet";
+    }
+}
